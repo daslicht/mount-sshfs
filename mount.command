@@ -22,6 +22,7 @@ MOUNT=$MOUNTROOT/$VOLUMENAME
 CheckIfMountFolderExists() {
   if [ -d "$MOUNT" ]; then
     echo "exists, call mount"
+    Mount
   else
     echo "not exists"
     mkdir $MOUNT
@@ -49,6 +50,5 @@ Mount() {
   echo $PASSWORD | sshfs -o password_stdin -o volname=$VOLUMENAME -o local $USERNAME@$HOST:$REMOTEDIR $MOUNT
 }
 
-Mount
 
 echo "done"
